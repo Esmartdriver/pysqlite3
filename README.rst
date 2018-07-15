@@ -1,3 +1,11 @@
+pysqlite3-standalone
+====================
+
+This provides a standalone pysqlite3 including featureful sqlite3 library built
+according to
+http://charlesleifer.com/blog/compiling-sqlite-for-use-with-python-applications/
+.
+
 pysqlite3
 =========
 
