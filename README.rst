@@ -6,6 +6,33 @@ according to
 http://charlesleifer.com/blog/compiling-sqlite-for-use-with-python-applications/
 .
 
+This repo allows installing via pip
+
+.. code-block:: shell
+
+   $ pip install git+git://github.com/karlb/pysqlite3 --global-option="build_amalgamation"
+
+
+or with the following line in requirements.txt:
+
+.. code-block::
+
+   git+git://github.com/karlb/pysqlite3 --global-option="build_amalgamation"
+
+If you want to use the ICU extension for improved unicode support, you need to set the following environment variables
+
+.. code-block:: shell
+
+   CFLAGS='-DSQLITE_ENABLE_ICU'
+   CPPFLAGS=`icu-config --cppflags`
+   LDFLAGS=`icu-config --ldflags`
+
+Which would result in the following command when using pip
+
+.. code-block:: shell
+
+   CFLAGS='-DSQLITE_ENABLE_ICU' CPPFLAGS=`icu-config --cppflags` LDFLAGS=`icu-config --ldflags` pip install git+git://github.com/karlb/pysqlite3 --global-option="build_amalgamation"
+
 pysqlite3
 =========
 
