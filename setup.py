@@ -8,6 +8,7 @@ import sys
 from distutils import log
 from distutils.command.build_ext import build_ext
 from setuptools import Extension
+import setuptools.command.build_py
 
 # If you need to change anything, it should be enough to change setup.cfg.
 
@@ -112,6 +113,14 @@ class AmalgationLibSqliteBuilder(build_ext):
         self.__dict__[k] = v
 
 
+class BuildPyCommand(setuptools.command.build_py.build_py):
+    """ Build amalgamation before normal build command """
+
+    def run(self):
+        self.run_command('build_amalgamation')
+        setuptools.command.build_py.build_py.run(self)
+
+
 def get_setup_args():
     return dict(
         name=PACKAGE_NAME,
@@ -142,6 +151,7 @@ def get_setup_args():
             "Topic :: Database :: Database Engines/Servers",
             "Topic :: Software Development :: Libraries :: Python Modules"],
         cmdclass={
+            "build_py": BuildPyCommand,
             "build_amalgamation": AmalgationLibSqliteBuilder,
             "build_ext": SystemLibSqliteBuilder
         }
