@@ -1,7 +1,7 @@
 pysqlite3-standalone
 ====================
 
-This provides a standalone pysqlite3 including featureful sqlite3 library built
+This provides a standalone pysqlite3 including a featureful sqlite3 library built
 according to
 http://charlesleifer.com/blog/compiling-sqlite-for-use-with-python-applications/
 .
@@ -24,14 +24,14 @@ If you want to use the ICU extension for improved unicode support, you need to s
 .. code-block:: shell
 
    CFLAGS='-DSQLITE_ENABLE_ICU'
-   CPPFLAGS=`icu-config --cppflags`
-   LDFLAGS=`icu-config --ldflags`
+   CPPFLAGS=`pkg-config --cflags icu-uc icu-uc icu-i18n`
+   LDFLAGS=`pkg-config --libs icu-uc icu-uc icu-i18n`
 
 Which would result in the following command when using pip
 
 .. code-block:: shell
 
-   CFLAGS='-DSQLITE_ENABLE_ICU' CPPFLAGS=`icu-config --cppflags` LDFLAGS=`icu-config --ldflags` pip install git+git://github.com/karlb/pysqlite3
+    CFLAGS='-DSQLITE_ENABLE_ICU' CPPFLAGS=`pkg-config --cflags icu-uc icu-uc icu-i18n` LDFLAGS=`pkg-config --libs icu-uc icu-uc icu-i18n` pip install git+git://github.com/karlb/pysqlite3
 
 pysqlite3
 =========
