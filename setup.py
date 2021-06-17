@@ -81,6 +81,7 @@ class AmalgationLibSqliteBuilder(build_ext):
             'ENABLE_FTS4',
             'ENABLE_FTS5',
             'ENABLE_JSON1',
+            'ENABLE_GEOPOLY',
             'ENABLE_LOAD_EXTENSION',
             'ENABLE_RTREE',
             'ENABLE_STAT4',
